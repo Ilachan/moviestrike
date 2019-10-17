@@ -30,9 +30,10 @@ async function getData()
 				var moviename = movie.data[i].name;
         var listItem = document.createElement('li');
         var watched = document.createElement("INPUT"); 
+        listItem.setAttribute("id", "aGFG"+i);
             watched.setAttribute("type", "button"); 
             watched.setAttribute("value", "watched");  
-            watched.setAttribute("id", "GFG"); 
+            watched.setAttribute("id", "GFG"+i); 
 				listItem.innerHTML = moviename
         
         var u=document.getElementById('l')
@@ -40,7 +41,7 @@ async function getData()
         
         watched.onclick = function(){
 
-strike(this.id)};
+strike("a"+this.id)};
 
 
    
