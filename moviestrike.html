@@ -1,0 +1,56 @@
+<html>
+<body>
+
+<h1 id="heading">
+Movies
+</h1>
+          
+          
+<button onclick="getData()">Show Movies</button>
+
+<ul id='l'>
+</ul> 
+
+<script>
+function strike(id)
+{
+document.getElementById(id).style="text-decoration: line-through";
+}
+
+async function getData()
+{
+		try
+    {
+    		let data = await axios.get('http://localhost:3000/movies')
+				//console.log('movie',movies.data);
+        var movie = data;
+        var i
+        for (i=0; i < movie.data.length; i++)
+        {
+				var moviename = movie.data[i].name;
+        var listItem = document.createElement('li');
+        var watched = document.createElement("INPUT"); 
+            watched.setAttribute("type", "button"); 
+            watched.setAttribute("value", "watched");  
+            watched.setAttribute("id", "GFG"); 
+				listItem.innerHTML = moviename
+        
+        var u=document.getElementById('l')
+        u.appendChild(listItem).appendChild(watched);
+        
+        watched.onclick = function(){
+
+strike(this.id)};
+
+
+   
+				}
+		}
+    catch(err){
+         			console.log("There are No Movies",err);
+               }
+}
+
+</script>
+</body>
+</html>
